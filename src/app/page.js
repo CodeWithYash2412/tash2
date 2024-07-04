@@ -112,6 +112,8 @@
 import { useEffect, useState } from "react";
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { CgProfile } from "react-icons/cg";
+
 
 const Page = () => {
   const [users, setUsers] = useState([]);
@@ -181,6 +183,10 @@ const Page = () => {
                 src={user.avatar}
                 alt="avatar"
                 className="w-12 h-12 rounded-full mr-4"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = 'image/image.png';
+                }}
               />
               <div>
                 <h3 className="text-lg font-semibold">{user.profile.firstName} {user.profile.lastName}</h3>
@@ -197,6 +203,10 @@ const Page = () => {
               src={selectedUser.avatar}
               alt="avatar"
               className="w-1/4 rounded-full"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = 'image/image.png';
+              }}
             />
             <p className="mt-4 text-xl font-bold">
               {selectedUser.profile.firstName} {selectedUser.profile.lastName}
